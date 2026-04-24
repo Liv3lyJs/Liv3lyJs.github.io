@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jean-Sébastien Giroux</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f8f8f8;
+      --ink: #1c1c1c;
+      --ink-2: #444;
+      --ink-3: #777;
+      --ink-4: #aaa;
+      --accent: #4a6fa5;
+      --accent-2: #2e7d5e;
+      --accent-3: #8b4513;
+      --border: #e8e8e8;
+      --border-2: #d0d0d0;
+      --nav-h: 56px;
+      --font-serif: 'Lora', Georgia, serif;
+      --font-sans: 'Source Sans 3', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      height: var(--nav-h);
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center;
+      padding: 0 32px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-decoration: none;
+      margin-right: auto;
+      cursor: pointer;
+    }
+
+    .nav-links { display: flex; list-style: none; }
+
+    .nav-links li a {
+      display: block;
+      padding: 0 16px;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--ink-3);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      line-height: var(--nav-h);
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      cursor: pointer;
+    }
+    .nav-links li a:hover { color: var(--ink); }
+    .nav-links li a.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
+
+    /* PAGES */
+    .page { display: none; padding-top: var(--nav-h); }
+    .page.active { display: block; }
+
+    /* ABOUT LAYOUT */
+    .about-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 56px 32px 80px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    /* SIDEBAR */
+    .profile-sidebar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: sticky;
+      top: calc(var(--nav-h) + 32px);
+    }
+
+    .profile-photo {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dde4ed 0%, #c8d4e3 100%);
+      border: 3px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .profile-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--ink);
+      text-align: center;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+
+    .profile-title {
+      font-size: 0.76rem;
+      color: var(--ink-3);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .profile-links { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+
+    .profile-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--ink-3);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .profile-link:hover { color: var(--accent); }
+    .profile-link-icon { width: 16px; text-align: center; font-size: 0.9rem; flex-shrink: 0; }
+
+    /* MAIN */
+    .about-main { min-width: 0; }
+
+    .about-main h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .about-subtitle { font-size: 0.9rem; color: var(--ink-3); margin-bottom: 28px; }
+
+    .about-bio p {
+      font-size: 0.97rem;
+      color: var(--ink-2);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* SECTION BLOCKS */
+    .section-block { margin-top: 40px; padding-top: 36px; border-top: 1px solid var(--border); }
+
+    .section-block h2 {
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 20px;
+    }
+
+    /* AFFILIATIONS */
+    .affil-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .affil-list li {
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .affil-list li::before {
+      content: '▸';
+      font-size: 0.6rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      position: relative; top: -1px;
+    }
+
+    .affil-org { font-weight: 500; color: var(--ink); }
+    .affil-role { color: var(--ink-3); font-size: 0.84rem; }
+
+    /* INTEREST TAGS */
+    .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .interest-tag {
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-2);
+      color: var(--ink-2);
+      background: var(--bg-subtle);
+    }
+
+    /* VENTURE CARD */
+    .venture-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent-3);
+      border-radius: 4px;
+      padding: 24px 24px 22px;
+    }
+
+    .venture-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-3);
+      margin-bottom: 10px;
+    }
+
+    .venture-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--accent-3);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
+    }
+
+    .venture-role { font-size: 1.05rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .venture-stage { font-size: 0.8rem; color: var(--ink-3); margin-bottom: 14px; }
+
+    .venture-desc {
+      font-size: 0.9rem;
+      color: var(--ink-2);
+      line-height: 1.78;
+      margin-bottom: 16px;
+    }
+
+    .venture-themes { display: flex; flex-wrap: wrap; gap: 6px; }
+
+    .venture-theme {
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 3px;
+      background: #fff;
+      border: 1px solid #d4bfb0;
+      color: #7a4020;
+    }
+
+    /* RESEARCH PAGE */
+    .research-wrap { max-width: 960px; margin: 0 auto; padding: 56px 32px 100px; }
+
+    .research-wrap h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .research-intro { font-size: 0.93rem; color: var(--ink-3); margin-bottom: 48px; max-width: 560px; }
+
+    /* PROJECT ENTRIES */
+    .project-entry {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 40px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .research-interests-label {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+    .interest-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      max-width: 600px;
+      margin-bottom: 20px; 
+    }
+    .project-entry.visible { opacity: 1; transform: none; }
+    .project-entry:last-child { border-bottom: 1px solid var(--border); }
+
+    .proj-label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+
+    .proj-tag {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+    }
+    .proj-tag.climate { background: #e4f2ea; color: #2e7d5e; }
+    .proj-tag.neuro   { background: #e8eef5; color: #4a6fa5; }
+
+    .proj-status { font-size: 0.72rem; color: var(--ink-4); display: flex; align-items: center; gap: 5px; }
+    .proj-status-dot { width: 6px; height: 6px; border-radius: 50%; }
+    .proj-status-dot.published { background: #2e7d5e; }
+    .proj-status-dot.ongoing   { background: #c07020; }
+
+    .project-entry h2 {
+      font-family: var(--font-serif);
+      font-size: 1.28rem;
+      font-weight: 500;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+
+    .proj-authors { font-size: 0.82rem; color: var(--ink-3); margin-bottom: 12px; font-style: italic; }
+
+    .proj-desc { font-size: 0.9rem; color: var(--ink-2); line-height: 1.8; margin-bottom: 14px; }
+
+    .proj-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .proj-link {
+      font-size: 0.79rem;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+      padding: 4px 12px;
+      border: 1px solid #c0cfe0;
+      border-radius: 3px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .proj-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .proj-link.disabled { color: var(--ink-4); border-color: var(--border); cursor: default; pointer-events: none; }
+
+    /* PROJECT META SIDEBAR */
+    .proj-meta { padding-top: 4px; }
+    .proj-meta-block { margin-bottom: 20px; }
+    .proj-meta-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--ink-4); margin-bottom: 8px;
+    }
+    .proj-meta-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .proj-meta-tag {
+      font-size: 0.74rem; padding: 3px 8px;
+      background: var(--bg-subtle); border: 1px solid var(--border);
+      border-radius: 3px; color: var(--ink-2);
+    }
+    .proj-findings { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .proj-findings li {
+      font-size: 0.79rem; color: var(--ink-2);
+      padding-left: 12px; position: relative; line-height: 1.55;
+    }
+    .proj-findings li::before { content: '–'; position: absolute; left: 0; color: var(--ink-4); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-4);
+    }
+    footer a { color: var(--ink-3); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; }
+    .d3 { animation-delay: 0.25s; } .d4 { animation-delay: 0.35s; }
+    .d5 { animation-delay: 0.45s; } .d6 { animation-delay: 0.55s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 720px) {
+      .about-wrap { grid-template-columns: 1fr; gap: 32px; }
+      .profile-sidebar { position: static; flex-direction: row; flex-wrap: wrap; gap: 16px; align-items: center; }
+      .profile-photo { width: 80px; height: 80px; font-size: 1.8rem; margin-bottom: 0; }
+      .profile-name, .profile-title { text-align: left; }
+      .project-entry { grid-template-columns: 1fr; gap: 20px; }
+      nav { padding: 0 16px; }
+      .nav-links li a { padding: 0 10px; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <ul class="nav-links">
+    <li><a id="nav-about" class="active" onclick="showPage('about')">about</a></li>
+    <li><a id="nav-research" onclick="showPage('research')">research</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════ ABOUT ══════════ -->
+<div class="page active" id="page-about">
+<div class="about-wrap">
+
+  <aside class="profile-sidebar fade-in">
+    <div class="profile-photo">
+      <img src="photo.jpeg" alt="Jean-Sébastien Giroux" style="width:100%; height:100%; object-fit:cover;">
+    </div>
+    <div class="profile-title">Master Student @ Polytechnique Montréal · Mila - Québec AI institute</div>
+    <div class="profile-links">
+      <a class="profile-link" href="mailto:jeanseb0598@hotmail.com">
+        <span class="profile-link-icon">✉</span> jeanseb0598@hotmail.com
+      </a>
+      <a class="profile-link" href="https://scholar.google.ca/citations?user=Vy7QF24AAAAJ&hl=en" target="_blank">
+        <span class="profile-link-icon">🎓</span> Google Scholar
+      </a>
+      <a class="profile-link" href="https://github.com/Liv3lyJs" target="_blank">
+        <span class="profiele-link-icon">🔨</span> GitHub 
+      </a>
+      <a class="profile-link" href="https://www.linkedin.com/in/jeansebgiroux/" target="_blank">
+        <span class="profile-link-icon">in</span> LinkedIn
+      </a>
+    </div>
+  </aside>
+
+  <main class="about-main">
+    <h1 class="fade-in d1">Jean-Sébastien Giroux</h1>
+    <p class="about-subtitle fade-in d2">MASc Student · Polytechnique & Mila, Montréal, Québec</p>
+
+    <div class="about-bio fade-in d3">
+      <p>
+        I am a master's student working at the intersection of artificial intelligence and neuroscience, 
+        a field known as <strong>Neuro-AI</strong>. 
+        My work spans two complementary areas: <strong>Artificial Intelligence</strong>, where I use 
+        mathematical optimization - Bayesian Optimization based on Gaussian Processes (GPBO),  and 
+        <strong>Neuroscience</strong>, where I use neuromodulation to restore lost functions in animals 
+        and humans after an injury. 
+        I am interested in fundamental AI, mathematics research, neuroscience and in bringing them to operational 
+        use in the medical field.
+        My research is done under the supervision of Professor <a href="https://mila.quebec/en/directory/marco-bonizzato"> Marco Bonizzato</a> 
+        @ <a href="https://www.polymtl.ca/"> Polytechnique Montréal</a> and <a href="https://mila.quebec/en"> Mila - Québec AI institute</a> 
+        within <a href="https://scineurotech.com/"> sciNeurotech Lab</a>.
+      </p>
+      <p>
+        Before joining this lab, I was an applied research scientist @ <a href="https://www.canada.ca/en/environment-climate-change.html"> Environment and Climate Change Canada</a> leading two projects 
+        - <a href="https://journals.ametsoc.org/view/journals/aies/4/4/AIES-D-24-0097.1.xml"> Wind power downscaling over subcontinental grid</a>, and wind power forecasting for Quebec wind farms. 
+      </p>
+      <p>
+        I am very interested in bringing my research to operational use - don't hesitate to contact me for collaborations. 
+      </p>
+    </div>
+
+    <!-- Affiliations -->
+    <div class="section-block fade-in d4">
+      <h2>Affiliations</h2>
+      <ul class="affil-list">
+        <li>
+          <span>
+            <span class="affil-org">Polytechnique Montréal & Mila – Québec AI Institute</span><br>
+            <span class="affil-role">Master Student · Supervisor: Prof. Marco Bonizzato</span>
+          </span>
+        </li>
+        <li>
+          <span>
+            <span class="affil-org">Startup (stealth mode)</span><br>
+            <span class="affil-role">CEO· Venture Scientist</span>
+          </span>
+        </li>
+        <li>
+          <span>
+            <span class="affil-org">Environment and Climate Change Canada (ECCC)</span><br>
+            <span class="affil-role">Applied AI Research Scientist</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </main>
+</div>
+</div>
+
+<!-- ══════════ RESEARCH ══════════ -->
+<div class="page" id="page-research">
+<div class="research-wrap">
+
+  <h1 class="fade-in">Research</h1>
+  <p class="research-interests-label">Interests</p>
+  <div class="interest-tags">
+    <span class="interest-tag">Artificial Intelligence</span>
+    <span class="interest-tag">Deep Learning</span>
+    <span class="interest-tag">Computer Vision</span>
+    <span class="interest-tag">Time Series</span>
+    <span class="interest-tag">Multimodal Models</span>
+    <span class="interest-tag">Foundation Models</span>
+    <span class="interest-tag">Neuromodulation</span>
+    <span class="interest-tag">Neuroscience</span>
+  </div>
+  
+
+
+    <!-- Project 3 -->
+    <!--  <div class="project-entry" id="proj-3">
+      <div class="proj-body">
+        <div class="proj-label">
+          <span class="proj-tag neuro">Neuro-AI</span>
+          <span class="proj-status">
+            <span class="proj-status-dot ongoing"></span> Ongoing
+          </span>
+        </div>
+        <h2>Wind Power Forecasting with Deep Sequence Models</h2>
+        <p class="proj-authors"><strong>Jean-Sébastien Giroux*</strong>, Thomas Forest*, Mathieu Prévost et al. · Work in Progress</p>
+        <p class="proj-desc">
+          Accurate short-term wind power forecasting is essential for grid stability and renewable energy
+          integration. This project provides a comprehensive benchmark of deep learning architectures -
+          Dense networks, Recurent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model — for
+          next-day wind power forecasting at 1-hour temporal resolution over wind farm in Québec.
+        </p>
+        <p class="proj-desc">
+          We combine two complementary data sources: SCADA data (real-time sensor readings from the
+          wind park) and NWP data (numerical weather prediction forecasts). Fusing both sources
+          consistently outperforms models trained on either alone, establishing a strong benchmark
+          for operational wind power forecasting.
+        </p>
+        <div class="proj-links">
+          <a class="proj-link disabled">📄 Paper (coming soon)</a>
+          <a class="proj-link disabled">💻 Code (coming soon)</a>
+        </div>
+      </div>
+    </div> -->
+
+  <!-- Project 2 -->
+  <div class="project-entry" id="proj-2">
+    <div class="proj-body">
+      <div class="proj-label">
+        <span class="proj-tag climate">Meteorological-AI</span>
+        <span class="proj-status">
+          <span class="proj-status-dot ongoing"></span> Ongoing
+        </span>
+      </div>
+      <h2>Deep Learning Wind Power Forecasting with Multimodal Sequence Models</h2>
+      <p class="proj-authors"><strong>Jean-Sébastien Giroux*</strong>, Thomas Forest*, Mathieu Prévost et al. · Work in Progress</p>
+      <p class="proj-desc">
+        Accurate short-term wind power forecasting is essential for grid stability and renewable energy
+        integration. This project provides a comprehensive benchmark of deep learning architectures -
+        Dense networks, Recurent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model - for
+        next-day wind power forecasting at 1-hour temporal resolution over wind farm in Québec.
+      </p>
+      <p class="proj-desc">
+        We combine two complementary data sources: SCADA data (real-time sensor readings from the
+        wind park) and NWP data (numerical weather prediction forecasts). Fusing both sources
+        consistently outperforms models trained on either alone, establishing a strong benchmark
+        for operational wind power forecasting.
+      </p>
+      <div class="proj-links">
+        <a class="proj-link disabled">📄 Paper (coming soon)</a>
+        <a class="proj-link disabled">💻 Code (coming soon)</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 1 -->
+  <div class="project-entry" id="proj-1">
+    <div class="proj-body">
+      <div class="proj-label">
+        <span class="proj-tag climate">Meteorological-AI</span>
+        <span class="proj-status">
+          <span class="proj-status-dot published"></span> Published · Artificial Intelligence for the Earth Systems (AIES) 2025
+        </span>
+      </div>
+      <h2>Interpolation-Free Deep Learning for Meteorological Downscaling on Unaligned Grids across Multiple Domains with Application to Wind Power</h2>
+      <p class="proj-authors"><strong>Jean-Sébastien Giroux</strong>, Simon-Philippe Breton, and Julie Carreau. · AIES, 2025</p>
+      <p class="proj-desc">
+        As wind energy production accelerates, reliable wind forecasts become critical — but numerical weather prediction models are too 
+        computationally expensive to capture fine-scale wind behaviors. We develop a deep learning downscaling model based on a U-Net architecture 
+        that learns to map coarse probabilistic wind forecasts to high-resolution outputs, eliminating the need for conventional preprocessing steps. 
+        The model is extended to the full Canadian region via transfer learning, and results show that low-resolution wind speed alone 
+        is sufficient as input. Downscaled wind velocities show promising improvements in detecting wind power ramps - a key phenomenon for grid stability.
+      </p>
+      <div class="proj-links">
+        <a class="proj-link" href="https://journals.ametsoc.org/view/journals/aies/4/4/AIES-D-24-0097.1.xml" target="_blank">📄 Paper</a>
+        <a class="proj-link" href="https://github.com/Liv3lyJs/windDownscalingECCC" target="_blank">💻 Code</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  Jean-Sébastien Giroux · Polytechnique Montréal · Mila · Montréal, Québec ·
+  <a href="mailto:jeanseb0598@hotmail.com">jeanseb0598@hotmail.com</a><br>
+  <span style="font-size:0.7rem;">Last updated: 2026</span>
+</footer>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.getElementById('nav-' + name).classList.add('active');
+    window.scrollTo({ top: 0 });
+    if (name === 'research') setTimeout(observeProjects, 50);
+  }
+
+  function observeProjects() {
+    const cards = document.querySelectorAll('.project-entry');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05 });
+    cards.forEach(c => io.observe(c));
+  }
+</script>
+</body>
+</html>
