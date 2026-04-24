@@ -175,15 +175,30 @@
     }
 
     /* AFFILIATIONS */
-    .affil-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .affil-date {
+      font-size: 0.78rem;
+      color: var(--ink-4);
+      white-space: nowrap;
+      padding-top: 2px;
+      flex-shrink: 0;
+      margin-left: 12px; 
+    }
 
-    .affil-list li {
-      font-size: 0.92rem;
-      color: var(--ink-2);
+    .affil-section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 12px;
+    }
+
+    .affil-list {
+      list-style: none;
       display: flex;
-      align-items: baseline;
-      gap: 10px;
-      line-height: 1.5;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 8px;
     }
 
     .affil-list li::before {
@@ -466,34 +481,44 @@
       </p>
     </div>
 
-    <!-- Affiliations -->
-    <div class="section-block fade-in d4">
-      <h2>Affiliations</h2>
-      <ul class="affil-list">
-        <li>
-          <span>
-            <span class="affil-org">Polytechnique Montréal & Mila – Québec AI Institute</span><br>
-            <span class="affil-role">Master Student · Supervisor: Prof. Marco Bonizzato</span>
-          </span>
-        </li>
-        <li>
-          <span>
-            <span class="affil-org">Startup (stealth mode)</span><br>
-            <span class="affil-role">CEO· Venture Scientist</span>
-          </span>
-        </li>
-        <li>
-          <span>
-            <span class="affil-org">Environment and Climate Change Canada (ECCC)</span><br>
-            <span class="affil-role">Applied AI Research Scientist</span>
-          </span>
-        </li>
-      </ul>
-    </div>
+  <!-- Affiliations -->
+  <div class="section-block fade-in d4">
+    <h2>Affiliations</h2>
 
-  </main>
-</div>
-</div>
+    <ul class="affil-list">
+      <li>
+        <span>
+          <span class="affil-org">Polytechnique Montréal & Mila – Québec AI Institute</span><br>
+          <span class="affil-role">Master Student · Supervisor: Prof. Marco Bonizzato</span>
+        </span>
+        <span class="affil-date">2026 — Present</span>
+      </li>
+      <li>
+        <span>
+          <span class="affil-org">Startup (stealth mode)</span><br>
+          <span class="affil-role">CEO · Venture Scientist</span>
+        </span>
+        <span class="affil-date">2026 — Present</span>
+      </li>
+      <li>
+        <span>
+          <span class="affil-org">Environment and Climate Change Canada (ECCC)</span><br>
+          <span class="affil-role">Applied AI Research Scientist</span>
+        </span>
+        <span class="affil-date">2023 — 2026</span>
+      </li>
+      <li>
+        <span>
+          <span class="affil-org">Sherbrooke University – GRAMS Lab</span><br>
+          <span class="affil-role">Research Intern · Medical Imaging & Deep Learning</span>
+        </span>
+        <span class="affil-date">January - April 2023</span>
+      </li>
+    </ul>
+  </div>
+</main>
+</div> 
+</div> 
 
 <!-- ══════════ RESEARCH ══════════ -->
 <div class="page" id="page-research">
