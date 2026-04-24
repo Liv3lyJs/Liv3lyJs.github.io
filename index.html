@@ -810,6 +810,14 @@
 
   window.addEventListener('load', runSequence);
 
+  // Remove typewriter animation after first load so it doesn't replay
+  setTimeout(() => {
+    const h1 = document.querySelector('.typewriter');
+    const sub = document.querySelector('.typewriter-2');
+    if (h1) { h1.style.width = '100%'; h1.style.animation = 'none'; }
+    if (sub) { sub.style.width = '100%'; sub.style.opacity = '1'; sub.style.animation = 'none'; }
+  }, 2000); // after both typewriters finish
+
   // PAGE NAVIGATION
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -818,6 +826,14 @@
     document.getElementById('nav-' + name).classList.add('active');
     window.scrollTo({ top: 0 });
     if (name === 'research') setTimeout(observeProjects, 50);
+    if (name === 'about') {
+      document.querySelectorAll('.about-bio p').forEach(p => p.style.opacity = '1');
+      const affil = document.querySelector('.section-block.d7');
+      if (affil) {
+        affil.style.display = 'block';
+        affil.querySelectorAll('.affil-list li').forEach(li => li.style.opacity = '1');
+      }
+    }
   }
 
   function observeProjects() {
