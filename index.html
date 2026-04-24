@@ -26,6 +26,35 @@
       --font-sans: 'Source Sans 3', system-ui, sans-serif;
     }
 
+    [data-theme="dark"] {
+      --bg: #0f1117;
+      --bg-subtle: #1a1d27;
+      --ink: #e8e8e8;
+      --ink-2: #c0c0c0;
+      --ink-3: #888;
+      --ink-4: #555;
+      --border: #2a2d3a;
+      --border-2: #3a3d4a;
+    }
+  
+    [data-theme="dark"] nav {
+      background: rgba(15, 17, 23, 0.97);
+      border-bottom-color: var(--border);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border-2);
+      border-radius: 6px;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--ink-3);
+      margin-left: auto; /* ← this pushes it to the far right */
+      transition: border-color 0.15s;
+    }
+    .theme-toggle:hover { border-color: var(--ink-3); }
+
     html { scroll-behavior: smooth; }
 
     body {
@@ -35,6 +64,7 @@
       font-size: 16px;
       line-height: 1.7;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease; /* ← add this */
     }
 
     /* NAV */
@@ -45,6 +75,7 @@
       border-bottom: 1px solid var(--border);
       display: flex; align-items: center;
       padding: 0 32px;
+      transition: background 0.3s ease, border-color 0.3s ease; /* ← add this */
     }
 
     .nav-brand {
@@ -427,6 +458,7 @@
     <li><a id="nav-about" class="active" onclick="showPage('about')">about</a></li>
     <li><a id="nav-research" onclick="showPage('research')">research</a></li>
   </ul>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
 </nav>
 
 <!-- ══════════ ABOUT ══════════ -->
@@ -655,6 +687,13 @@
       });
     }, { threshold: 0.05 });
     cards.forEach(c => io.observe(c));
+  }
+
+  function toggleTheme() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
   }
 </script>
 </body>
