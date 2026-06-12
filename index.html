@@ -4,6 +4,22 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jean-Sébastien Giroux</title>
+  <meta name="description" content="Jean-Sébastien Giroux - Graduate student in Neuro-AI at Polytechnique Montréal, Mila and SciNeurotech Lab, working on LLM-guided priors for Bayesian optimization and neurostimulation.">
+  <link rel="canonical" href="https://jeansebastiengiroux.com/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+  <!-- Open Graph (LinkedIn, Facebook, etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jeansebastiengiroux.com/">
+  <meta property="og:title" content="Jean-Sébastien Giroux">
+  <meta property="og:description" content="Graduate student in Neuro-AI at Polytechnique Montréal, Mila and SciNeurotech Lab, working on LLM-guided priors for Bayesian optimization and neurostimulation.">
+  <meta property="og:image" content="https://jeansebastiengiroux.com/photo-portrait.jpg">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jean-Sébastien Giroux">
+  <meta name="twitter:description" content="Graduate student in Neuro-AI at Polytechnique Montréal, Mila and SciNeurotech Lab, working on LLM-guided priors for Bayesian optimization and neurostimulation.">
+  <meta name="twitter:image" content="https://jeansebastiengiroux.com/photo-portrait.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -64,7 +80,7 @@
     }
     .theme-toggle:hover { border-color: var(--ink-3); }
 
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-y: scroll; }
 
     body {
       background: var(--bg);
@@ -125,7 +141,7 @@
       margin: 0 auto;
       padding: 56px 32px 80px;
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 240px 1fr;
       gap: 56px;
       align-items: start;
     }
@@ -140,8 +156,8 @@
     }
 
     .profile-photo {
-      width: 200px;
-      height: 260px;
+      width: 240px;
+      height: 312px;
       border-radius: 16px;
       margin-bottom: 16px;
       overflow: hidden;
@@ -154,8 +170,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
     }
 
 
@@ -216,7 +230,7 @@
 
     .section-block h2 {
       font-size: 0.73rem;
-      font-weight: 600;
+      font-weight: 400;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--ink-4);
@@ -268,8 +282,34 @@
       position: relative; top: -1px;
     }
 
-    .affil-org { font-weight: 500; color: var(--ink); }
+    .affil-org { font-weight: 400; color: var(--ink-2); }
     .affil-role { color: var(--ink-3); font-size: 0.84rem; }
+
+    /* NEWS */
+    .news-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .news-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      font-size: 0.92rem;
+      color: var(--ink-2);
+      line-height: 1.6;
+    }
+
+    .news-date {
+      flex-shrink: 0;
+      width: 100px;
+      font-size: 0.8rem;
+      color: var(--ink-4);
+      white-space: nowrap;
+      padding-top: 2px;
+    }
 
     /* INTEREST TAGS */
     .interest-tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -358,9 +398,6 @@
       grid-template-columns: 1fr 220px;
       gap: 40px;
       align-items: start;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.45s ease, transform 0.45s ease;
     }
     .research-interests-label {
       color: #888;
@@ -374,7 +411,6 @@
       max-width: 600px;
       margin-bottom: 20px; 
     }
-    .project-entry.visible { opacity: 1; transform: none; }
     .project-entry:last-child { border-bottom: 1px solid var(--border); }
 
     .proj-label { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
@@ -443,6 +479,40 @@
     }
     .proj-findings li::before { content: '–'; position: absolute; left: 0; color: var(--ink-4); }
 
+    /* TRAVELS */
+    .travel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .travel-card { margin: 0; }
+
+    .travel-card a { display: block; }
+
+    .travel-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      display: block;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .travel-card figcaption {
+      font-size: 0.8rem;
+      color: var(--ink-3);
+      margin-top: 7px;
+      line-height: 1.4;
+    }
+
+    .travel-empty {
+      font-size: 0.9rem;
+      color: var(--ink-3);
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
     /* FOOTER */
     footer {
       border-top: 1px solid var(--border);
@@ -453,14 +523,6 @@
     }
     footer a { color: var(--ink-3); text-decoration: none; }
     footer a:hover { color: var(--accent); }
-
-    /* FADE IN */
-    .fade-in { opacity: 0; transform: translateY(8px); animation: fadeUp 0.5s ease forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: none; } }
-    .d1 { animation-delay: 0.05s; } .d2 { animation-delay: 0.15s; }
-    .d3 { animation-delay: 0.25s; } .d4 { animation-delay: 1.6s; }
-    .d5 { animation-delay: 1.9s; } .d6 { animation-delay: 2.2s; }
-    .d7 { display: none; }
 
     /* RESPONSIVE */
     @media (max-width: 720px) {
@@ -478,28 +540,6 @@
     .nav-links li a { padding: 0 10px; font-size: 0.82rem; }
    }
 
-   /* TYPEWRITER */
-    .typewriter {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 0;
-      animation: typing 0.8s steps(30) forwards;
-    }
-
-    .typewriter-2 {
-      overflow: hidden;
-      white-space: nowrap;
-      width: 0;
-      opacity: 0;
-      animation: typing 0.6s steps(40) 0.9s forwards;
-    }
-
-    @keyframes typing {
-      from { width: 0; opacity: 1; }
-      to { width: 100%; opacity: 1; }
-    }
-
-
   </style>
 </head>
 <body>
@@ -509,6 +549,7 @@
   <ul class="nav-links">
     <li><a id="nav-about" class="active" onclick="showPage('about')">about</a></li>
     <li><a id="nav-research" onclick="showPage('research')">research</a></li>
+    <li><a id="nav-travels" onclick="showPage('travels')">beyond the lab</a></li>
   </ul>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
 </nav>
@@ -517,11 +558,10 @@
 <div class="page active" id="page-about">
 <div class="about-wrap">
 
-  <aside class="profile-sidebar fade-in">
+  <aside class="profile-sidebar">
     <div class="profile-photo">
-      <img src="photo.jpeg" alt="Jean-Sébastien Giroux" style="width:100%; height:100%; object-fit:cover;">
+      <img src="photo-portrait.jpg" alt="Jean-Sébastien Giroux">
     </div>
-    <div class="profile-title">Master Student @ Polytechnique Montréal · Mila - Québec AI institute</div>
     <div class="profile-links">
       <a class="profile-link" href="mailto:jeanseb0598@hotmail.com">
         <span class="profile-link-icon">✉</span> jeanseb0598@hotmail.com
@@ -539,64 +579,75 @@
   </aside>
 
   <main class="about-main">
-    <h1 class="typewriter">Jean-Sébastien Giroux</h1>
-    <p class="about-subtitle typewriter-2">MASc Student · Polytechnique & Mila, Montréal, Québec</p>
+    <h1>Jean-Sébastien Giroux</h1>
+    <p class="about-subtitle">MASc Student · Polytechnique & Mila, Montréal, Québec</p>
 
     <div class="about-bio">
-      <p class="fade-in d4">
-        I am a master's student working at the intersection of artificial intelligence and neuroscience, 
-        a field known as <strong>Neuro-AI</strong>. 
-        My work spans two complementary areas: <strong>Artificial Intelligence</strong>, where I use 
-        mathematical optimization - Bayesian Optimization based on Gaussian Processes (GPBO),  and 
-        <strong>Neuroscience</strong>, where I use neuromodulation to restore lost functions in animals 
-        and humans after an injury. 
-        I am interested in fundamental AI, mathematics research, neuroscience and in bringing them to operational 
-        use in the medical field.
+      <p>
+        I am a graduate student working at the intersection of artificial intelligence and neuroscience,
+        a field known as Neuro-AI.
+        My work spans two complementary areas: artificial intelligence, where I improve
+        machine learning algorithms with deep learning, and
+        neuroscience, where I apply these advances in neurostimulation to help people
+        regain lost functionalities, for example being able to walk or see again.
         My research is done under the supervision of Professor <a href="https://mila.quebec/en/directory/marco-bonizzato"> Marco Bonizzato</a> 
         @ <a href="https://www.polymtl.ca/"> Polytechnique Montréal</a> and <a href="https://mila.quebec/en"> Mila - Québec AI institute</a> 
         within <a href="https://scineurotech.com/"> sciNeurotech Lab</a>.
       </p>
-      <p class="fade-in d5">
-        Before joining this lab, I was an applied research scientist @ <a href="https://www.canada.ca/en/environment-climate-change.html"> Environment and Climate Change Canada</a> leading two projects 
-        - <a href="https://journals.ametsoc.org/view/journals/aies/4/4/AIES-D-24-0097.1.xml"> Wind power downscaling over subcontinental grid</a>, and wind power forecasting for Quebec wind farms. 
+      <p>
+        Before joining this lab, I was an applied research scientist @ <a href="https://www.canada.ca/en/environment-climate-change.html"> Environment and Climate Change Canada</a> leading two projects:
+        meteorological downscaling over subcontinental grid, and deep learning wind power forecasting for Quebec wind farms. 
       </p>
-      <p class="fade-in d6">
-        I am very interested in bringing my research to operational use - don't hesitate to contact me for collaborations. 
+      <p>
+        I am very interested in bringing my research to operational use, don't hesitate to contact me for research collaborations, AI contracting, or internship opportunities.
       </p>
     </div>
 
   <!-- Affiliations -->
-  <div class="section-block d7">
+  <div class="section-block">
     <h2>Affiliations</h2>
 
     <ul class="affil-list">
       <li>
         <span>
-          <span class="affil-org">Polytechnique Montréal & Mila – Québec AI Institute</span><br>
-          <span class="affil-role">Master Student · Supervisor: Prof. Marco Bonizzato</span>
+          <span class="affil-org">MASc, Electrical Engineering, <a href="https://www.polymtl.ca/">Polytechnique Montréal</a></span>
         </span>
-        <span class="affil-date">2026 — Present</span>
       </li>
       <li>
         <span>
-          <span class="affil-org">Startup (stealth mode)</span><br>
-          <span class="affil-role">CEO · Venture Scientist</span>
+          <span class="affil-org">Graduate Researcher, <a href="https://mila.quebec/en">Mila (Quebec AI Institute)</a></span>
         </span>
-        <span class="affil-date">2026 — Present</span>
       </li>
       <li>
         <span>
-          <span class="affil-org">Environment and Climate Change Canada (ECCC)</span><br>
-          <span class="affil-role">Applied AI Research Scientist</span>
+          <span class="affil-org">Graduate Researcher, <a href="https://scineurotech.com/">SciNeurotech Lab</a></span>
         </span>
-        <span class="affil-date">2023 — 2026</span>
       </li>
       <li>
         <span>
-          <span class="affil-org">Sherbrooke University – GRAMS Lab</span><br>
-          <span class="affil-role">Research Intern · Medical Imaging & Deep Learning</span>
+          <span class="affil-org">AI Contractor, ML & DL, Neuroscience · Climate · Healthcare</span>
         </span>
-        <span class="affil-date">January - April 2023</span>
+      </li>
+      <li>
+        <span>
+          <span class="affil-org">Lux-I, Founder & CEO</span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- News -->
+  <div class="section-block">
+    <h2>News</h2>
+
+    <ul class="news-list">
+      <li>
+        <span class="news-date">May 01, 2026</span>
+        <span class="news-text">Joined Prof. Marco Bonizzato at SciNeurotech Lab for my MASc, working on LLM-guided priors for Bayesian optimization. Très fier de rester au Québec et de poursuivre mes études graduées au Mila. 🚀</span>
+      </li>
+      <li>
+        <span class="news-date">Nov 14, 2025</span>
+        <span class="news-text">Excited to share that my first journal paper has been published in Artificial Intelligence for the Earth Systems! 🎉</span>
       </li>
     </ul>
   </div>
@@ -608,16 +659,13 @@
 <div class="page" id="page-research">
 <div class="research-wrap">
 
-  <h1 class="fade-in">Research</h1>
+  <h1>Research</h1>
   <p class="research-interests-label">Interests</p>
   <div class="interest-tags">
-    <span class="interest-tag">Artificial Intelligence</span>
+    <span class="interest-tag">Machine Learning</span>
     <span class="interest-tag">Deep Learning</span>
     <span class="interest-tag">Computer Vision</span>
     <span class="interest-tag">Time Series</span>
-    <span class="interest-tag">Multimodal Models</span>
-    <span class="interest-tag">Foundation Models</span>
-    <span class="interest-tag">Neuromodulation</span>
     <span class="interest-tag">Neuroscience</span>
   </div>
   
@@ -637,8 +685,8 @@
         <p class="proj-desc">
           Accurate short-term wind power forecasting is essential for grid stability and renewable energy
           integration. This project provides a comprehensive benchmark of deep learning architectures -
-          Dense networks, Recurent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model — for
-          next-day wind power forecasting at 1-hour temporal resolution over wind farm in Québec.
+          Dense networks, Recurrent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model - for
+          next-day wind power forecasting at 1-hour temporal resolution over a wind farm in Québec.
         </p>
         <p class="proj-desc">
           We combine two complementary data sources: SCADA data (real-time sensor readings from the
@@ -667,8 +715,8 @@
       <p class="proj-desc">
         Accurate short-term wind power forecasting is essential for grid stability and renewable energy
         integration. This project provides a comprehensive benchmark of deep learning architectures -
-        Dense networks, Recurent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model - for
-        next-day wind power forecasting at 1-hour temporal resolution over wind farm in Québec.
+        Dense networks, Recurrent neural networks (LSTMs, GRUs), Transformers, and the recent Mamba state-space model - for
+        next-day wind power forecasting at 1-hour temporal resolution over a wind farm in Québec.
       </p>
       <p class="proj-desc">
         We combine two complementary data sources: SCADA data (real-time sensor readings from the
@@ -695,7 +743,7 @@
       <h2>Interpolation-Free Deep Learning for Meteorological Downscaling on Unaligned Grids across Multiple Domains with Application to Wind Power</h2>
       <p class="proj-authors"><strong>Jean-Sébastien Giroux</strong>, Simon-Philippe Breton, and Julie Carreau. · AIES, 2025</p>
       <p class="proj-desc">
-        As wind energy production accelerates, reliable wind forecasts become critical — but numerical weather prediction models are too 
+        As wind energy production accelerates, reliable wind forecasts become critical - but numerical weather prediction models are too 
         computationally expensive to capture fine-scale wind behaviors. We develop a deep learning downscaling model based on a U-Net architecture 
         that learns to map coarse probabilistic wind forecasts to high-resolution outputs, eliminating the need for conventional preprocessing steps. 
         The model is extended to the full Canadian region via transfer learning, and results show that low-resolution wind speed alone 
@@ -707,6 +755,33 @@
       </div>
     </div>
   </div>
+
+</div>
+</div>
+
+<!-- ══════════ TRAVELS ══════════ -->
+<div class="page" id="page-travels">
+<div class="research-wrap">
+
+  <h1>Beyond the Lab</h1>
+  <p class="research-intro">
+    What drives me in life is curiosity, and the pursuit of excellence (Per aspera ad astra).
+    Outside the lab, I love to explore new activities and experiences. One of my biggest
+    passions is traveling to new places and immersing myself in local cultures.
+  </p>
+
+  <div class="travel-grid">
+    <!-- To add a photo: copy the image into the travels/ folder, then duplicate this block:
+    <figure class="travel-card">
+      <a href="travels/vancouver.jpg" target="_blank">
+        <img src="travels/vancouver.jpg" alt="Vancouver, Canada" loading="lazy">
+      </a>
+      <figcaption>Vancouver, Canada · 2024</figcaption>
+    </figure>
+    -->
+  </div>
+
+  <p class="travel-empty" id="travel-empty">Photos coming soon.</p>
 
 </div>
 </div>
@@ -733,91 +808,6 @@
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
   }
 
-  // TYPEWRITER FOR PARAGRAPHS
-  function typeElement(el, speed, callback) {
-    const fullHTML = el.innerHTML;
-    el.innerHTML = '';
-    el.style.opacity = '1';
-    let i = 0;
-
-    function next() {
-      if (i < fullHTML.length) {
-        if (fullHTML[i] === '<') {
-          // Find closing > and add the whole tag at once
-          const close = fullHTML.indexOf('>', i);
-          if (close === -1) { i++; setTimeout(next, speed); return; }
-          el.innerHTML = fullHTML.substring(0, close + 1);
-          i = close + 1;
-          setTimeout(next, 0);
-        } else {
-          // Add one character at a time
-          el.innerHTML = fullHTML.substring(0, i + 1);
-          i++;
-          setTimeout(next, speed);
-        }
-      } else if (callback) {
-        callback();
-      }
-    }
-    next();
-  }
-
-  function runSequence() {
-    const p1 = document.querySelector('.about-bio .d4');
-    const p2 = document.querySelector('.about-bio .d5');
-    const p3 = document.querySelector('.about-bio .d6');
-    const affil = document.querySelector('.section-block.d7');
-    const heading = affil.querySelector('h2');
-    const items = affil.querySelectorAll('.affil-list li');
-
-    // Pre-save all content and clear it BEFORE showing
-    const headingHTML = heading.innerHTML;
-    heading.innerHTML = '';
-    const itemsHTML = Array.from(items).map(li => { const h = li.innerHTML; li.innerHTML = ''; li.style.opacity = '0'; return h; });
-
-    [p1, p2, p3].forEach(el => { el.style.opacity = '0'; el.classList.remove('fade-in'); });
-
-    setTimeout(() => typeElement(p1, 3, () => {
-      setTimeout(() => typeElement(p2, 3, () => {
-        setTimeout(() => typeElement(p3, 3, () => {
-
-          // Show section — already empty so nothing flashes
-          affil.style.display = 'block';
-
-          // Restore heading content then type it
-          heading.innerHTML = headingHTML;
-          heading.innerHTML = '';
-          typeElement(heading, 5, () => {
-            // Restore and type each item
-            items.forEach((li, i) => li.innerHTML = itemsHTML[i]);
-            items.forEach(li => li.style.opacity = '0');
-            let idx = 0;
-            function typeNext() {
-              if (idx < items.length) {
-                items[idx].style.opacity = '1';
-                typeElement(items[idx], 3, () => { idx++; setTimeout(typeNext, 150); });
-              }
-            }
-            typeNext();
-          });
-          // NOW give heading its content for typeElement
-          heading.innerHTML = headingHTML;
-
-        }), 200);
-      }), 200);
-    }), 1600);
-  }
-
-  window.addEventListener('load', runSequence);
-
-  // Remove typewriter animation after first load so it doesn't replay
-  setTimeout(() => {
-    const h1 = document.querySelector('.typewriter');
-    const sub = document.querySelector('.typewriter-2');
-    if (h1) { h1.style.width = '100%'; h1.style.animation = 'none'; }
-    if (sub) { sub.style.width = '100%'; sub.style.opacity = '1'; sub.style.animation = 'none'; }
-  }, 2000); // after both typewriters finish
-
   // PAGE NAVIGATION
   function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -825,28 +815,6 @@
     document.getElementById('page-' + name).classList.add('active');
     document.getElementById('nav-' + name).classList.add('active');
     window.scrollTo({ top: 0 });
-    if (name === 'research') setTimeout(observeProjects, 50);
-    if (name === 'about') {
-      document.querySelectorAll('.about-bio p').forEach(p => p.style.opacity = '1');
-      const affil = document.querySelector('.section-block.d7');
-      if (affil) {
-        affil.style.display = 'block';
-        affil.querySelectorAll('.affil-list li').forEach(li => li.style.opacity = '1');
-      }
-    }
-  }
-
-  function observeProjects() {
-    const cards = document.querySelectorAll('.project-entry');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e, i) => {
-        if (e.isIntersecting) {
-          setTimeout(() => e.target.classList.add('visible'), i * 100);
-          io.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.05 });
-    cards.forEach(c => io.observe(c));
   }
 </script>
 </body>
